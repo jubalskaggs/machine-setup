@@ -1,0 +1,7 @@
+- name: Playbook to Install podman dependencies onto docker nodes
+  hosts: docker
+  tasks:
+  - name: Install podman
+    package:
+      name: podman
+      state: present

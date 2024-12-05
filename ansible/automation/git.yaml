@@ -1,0 +1,7 @@
+- name: install git everywhere
+  hosts: all
+  tasks:
+  - name: install git
+    package:
+      name: git
+      state: present

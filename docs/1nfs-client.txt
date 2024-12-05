@@ -1,0 +1,6 @@
+1. to setup the nfs client as root
+
+dnf install -y autofs nfs-utils
+systemctl --now enable autofs
+systemctl --now start autofs
+echo "192.168.0.177 nfs-arm-0" >> /etc/hosts

@@ -1,0 +1,6 @@
+- name: dnf update
+  hosts: all
+  become: true
+  tasks:
+    - name: run dnf updates
+      ansible.builtin.shell: dnf update -y

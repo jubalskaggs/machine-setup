@@ -1,0 +1,58 @@
+https://www.linuxtechi.com/how-to-install-ansible-on-rhel/
+
+sudo dnf install -y \
+	ansible-core 
+
+on each client, create a conf user (i do this by default) that's a member of the wheel group
+we will also permit the ansible user to NOPASSWD sudo, so.. this account essentially has root
+on every machine.
+
+groupadd -g 1000 conf
+useradd -u1000 -g1000 -Gwheel -s/bin/bash -m conf
+
+echo "conf ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers/conf
+
+on the ansible server as "conf" we will ship our ssh keys to each node as conf
+1. generate the keys as conf on the ansible node
+ssh-keygen -ted25519
+
+2. ship the keys to each node so that the ansible node can authenticate and be admin on them.
+ssh-copy-id node_$x
+
+
+3. on the ansible server:
+mkdir ~/automation
+cd ~/automation
+echo this to ./ansible.cfg
+[defaults]
+inventory = ./inventory
+host_key_checking = false
+remote_user = conf
+ask_pass = False
+
+[privilege_escalation]
+become=true
+become_method=sudo
+become_user=root
+become_ask_pass=False
+
+4. now create an inventory file in ~/automation/inventory with the contents like so:
+[scratch]
+scratch-arm-0
+
+[docker]
+docker-arm-0
+docker-arm-1
+docker-arm-2
+
+[nfs]
+nfs-arm-0
+
+[ansible]
+ansible-arm-0
+
+
+5. put all of the hosts in the inventory file. now run
+ansible all -m ping
+
+

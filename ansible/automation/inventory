@@ -1,0 +1,16 @@
+[scratch]
+scratch-arm-0
+
+[docker]
+docker-arm-0
+docker-arm-1
+docker-arm-2
+
+[nfs]
+nfs-arm-0
+
+[ansible]
+ansible-arm-0
+
+[gitlab]
+gitlab-arm-0
