@@ -1,9 +1,9 @@
 ---
-- name: install Docker
+- name: Install Docker
   hosts: docker
   become: true
   tasks:
-    - name: set mydistribution
+    - name: Set mydistribution
       ansible.builtin.set_fact:
         mydistribution: "{{ 'rhel' if (ansible_distribution == 'Red Hat Enterprise Linux') else (ansible_distribution | lower) }}"
 

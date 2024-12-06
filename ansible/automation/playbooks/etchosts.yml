@@ -1,0 +1,8 @@
+- name: ensure etc hosts is up to date
+  blockinfile:
+    dest: /etc/hosts
+    block: |
+      {% for host in groups ['all'] %}
+      {{ hostvars[item]['ansible_ssh_host'] }} {{ item }}
+      {% endfor %}
+    state: present

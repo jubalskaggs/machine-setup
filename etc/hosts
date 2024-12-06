@@ -1,8 +1,9 @@
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-192.168.0.177 	nfs-arm-0 	nfs0
-192.168.0.209	docker-arm-0
-192.168.0.176	docker-arm-1
-192.168.0.210	docker-arm-2
-192.168.0.162	ansible-arm-0
-192.168.0.163 	scratch-arm-0
+10.211.55.13	nfs-arm-0
+10.211.55.10	docker-arm-0
+10.211.55.11	docker-arm-1
+10.211.55.12	docker-arm-2
+10.211.55.16	ansible-arm-0
+10.211.55.15	scratch-arm-0
+10.211.55.14	gitlab-arm-0

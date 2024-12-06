@@ -1,7 +1,8 @@
 https://www.linuxtechi.com/how-to-install-ansible-on-rhel/
 
 sudo dnf install -y \
-	ansible-core 
+	ansible-core \
+	ansible-collection-redhat-rhel_mgmt
 
 on each client, create a conf user (i do this by default) that's a member of the wheel group
 we will also permit the ansible user to NOPASSWD sudo, so.. this account essentially has root
@@ -10,7 +11,7 @@ on every machine.
 groupadd -g 1000 conf
 useradd -u1000 -g1000 -Gwheel -s/bin/bash -m conf
 
-echo "conf ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers/conf
+echo "conf ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/conf
 
 on the ansible server as "conf" we will ship our ssh keys to each node as conf
 1. generate the keys as conf on the ansible node

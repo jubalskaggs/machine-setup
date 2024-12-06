@@ -1,0 +1,7 @@
+- name: run the date command on all hosts
+  hosts: all
+  become: true
+  tasks:
+    - command: dnf update -y
+      register: out
+    - debug: msg="{{ out.stdout }}"
